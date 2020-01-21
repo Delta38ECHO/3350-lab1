@@ -1,5 +1,5 @@
 #pragma once
-
+#include <cstring>
 #include "Scene.h"
 
 // A child of the Scene class to make a new animated scene.
@@ -7,26 +7,34 @@
 class MyScene : public Scene
 {
     protected:
+	int x = 0;
+	int y = 0;
 
-        // Called once when the scene begins.
-        virtual void init()
-        {
-            // Keep this call to the parent's version of init()
-            Scene::init();
-            // Your code here
-
-
-        }
-
-        // Called once every frame. 
-        virtual void update()
-        {
-            // Your code here
+	// Called once when the scene begins.
+	virtual void init()
+	{
+	    // Keep this call to the parent's version of init()
+	    Scene::init();
+	    // Your code here
 
 
+	}
+
+	// Called once every frame. 
+	virtual void update()
+	{
+	    clearBoard();
+	    // Your code here
+	    board[y][x] = 'x';
+	    board[y+5][x+5] = 'x';
+	    board[y+10][x+10] = 'x';
+	    x++;
+	    y++;
 
 
-            // Keep this call to the parent's version of update()
-            Scene::update();
-        }
+
+
+	    // Keep this call to the parent's version of update()
+	    Scene::update();
+	}
 };
